@@ -81,13 +81,14 @@ namespace paco{
         {
             string filePath = @"C:\Users\ppandev\Desktop\Document.txt";
             StreamReader reader=null;
-            using(reader = new StreamReader(File.OpenRead(filePath)));
+            using(reader = new StreamReader(File.OpenRead(filePath))){
 
             string[] array_student = new string[99];
             List<student> list=new List<student>();
 
             file_to_string(reader, filePath, array_student);
-            from_file_to_list(list, array_student);
+            
+            from_file_to_list(list, array_student);}
         }
     }
 }
