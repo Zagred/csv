@@ -10,7 +10,7 @@ using System.Threading;
     {
         static void Main(string[] args)
         {
-            string FilePath = @"C:\Users\ppandev\Desktop\Document.txt";
+            string FilePath = @"C:\Users\paco\Desktop\csv-main\document.csv";
             StreamReader Reader=null;
             using(Reader = new StreamReader(File.OpenRead(FilePath))){
 
