@@ -1,8 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
+using System.Threading;
 public class CSVparsing
 {
-    public static void FileToString(StreamReader Reader, string[] FileContent)
+    public static List<Student> FileToList(StreamReader Reader, string[] FileContent,List<Student> StudentList)
     {
-        int counter = 0;
+        int counter=0;
         string words = null;
         while (!Reader.EndOfStream)
         {
@@ -21,7 +29,7 @@ public class CSVparsing
                 }
                 else if (line[i] == '"')
                 {
-                    for (int j = i + 1; j < line.Length; j++)
+                    for (int j = i + 1; j < line.Length; i++)
                     {
                         if (line[j] != '"')
                         {
@@ -39,19 +47,12 @@ public class CSVparsing
                     }
                     break;
                 }
-
             }
         }
-    }
-    public static void FileToList(List<Student> StudentList, string[] ArrayStudent)
-    {
-        for (int i = 0; i < ArrayStudent.Length; i += 3)
+        for (int i = 0; i < FileContent.Length; i += 3)
         {
-            StudentList.Add(new Student(ArrayStudent[i], ArrayStudent[i + 1], ArrayStudent[i + 2]));
+            StudentList.Add(new Student(FileContent[i], FileContent[i + 1], FileContent[i + 2]));
         }
-        foreach (var Student in StudentList)
-        {
-            Console.WriteLine($"{Student.name} {Student.lastname} {Student.adres}");
-        }
+        return StudentList;
     }
 }
