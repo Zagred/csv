@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-    public class Program
-    {
+public class Program
+{
         static void Main(string[] args)
         {
             string FilePath = @"C:\Users\ppandev\Desktop\paco\document.csv";
@@ -23,4 +23,4 @@ using System.Threading;
             }
         }
     }
-    }
+}
