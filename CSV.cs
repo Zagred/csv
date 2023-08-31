@@ -60,11 +60,14 @@ namespace Library
             {
                 StudentList.Add(new Student(FileContent[i], FileContent[i + 1], FileContent[i + 2]));
             }
+            return StudentList;
+        }
+        public static void ListPrint(List<Student> StudentList)
+        {
             foreach (var Student in StudentList)
             {
                 Console.WriteLine($"{Student.Name} {Student.Lastname} {Student.Adres}");
             }
-            return StudentList;
         }
     }
 }

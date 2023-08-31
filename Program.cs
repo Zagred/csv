@@ -17,6 +17,7 @@ public class Program
             string[] ArrayStudent = new string[99];
             List<Student> List=new List<Student>();
             List=CSVparsing.FileToList(Reader, ArrayStudent,List);
+            CSVparsing.ListPrint(List);
             
         }
     }
