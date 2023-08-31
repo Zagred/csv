@@ -6,53 +6,64 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-public class CSVparsing
-{
-    public static List<Student> FileToList(StreamReader Reader, string[] FileContent,List<Student> StudentList)
-    {
-        int counter=0;
-        string words = null;
-        while (!Reader.EndOfStream)
-        {
-            var line = Reader.ReadLine();
-            string[] split = new string[line.Length];
-            for (int i = 0; i < line.Length; i++)
-            {
-                words += line[i];
-                
-                if (line[i] == ',')
-                {
-                    words = words.Trim(',');
-                    FileContent[counter] = words;
-                    counter++;
-                    words = null;
-                }
-                else if (line[i] == '"')
-                {
-                    for (int j = i + 1; j < line.Length; i++)
-                    {
-                        if (line[j] != '"')
-                        {
-                            words += line[j];
-                        }
-                        else
-                        {
-                            words += line[i];
-                            FileContent[counter] = words;
-                            words = null;
-                            counter++;
-                            break;
 
-                        }
+namespace Library
+{
+    public class CSVparsing
+    {
+        public static List<Student> FileToList(StreamReader Reader, string[] FileContent, List<Student> StudentList,int StarterPoin)
+        {
+            int counter = 0,countersecond=0;
+            string words = null;
+            while (!Reader.EndOfStream)
+            {
+                var line = Reader.ReadLine();
+                string[] split = new string[line.Length];
+                for (int i = StarterPoin; i < line.Length; i++)
+                {
+                    words += line[i];
+
+                    if (line[i] == ',')
+                    {
+                        words = words.Trim(',');
+                        words = words.Trim(' ');
+                        FileContent[counter] = words;
+                        counter++;
+                        words = null;
                     }
-                    break;
+                    else if (line[i] == '"')//iskam se promeni za tazi funkciya
+                    {
+                        for (int j=i+1;j < line.Length; j++)
+                        {
+                            if (line[j] != '"')
+                            {
+                                words += line[j];
+                            }
+                            else
+                            {
+                                words += line[j];
+                                FileContent[counter] = words;
+                                words = null;
+                                counter++;
+                                FileToList(Reader, FileContent,StudentList, j);
+                                break;
+
+                            }
+                        }
+                        break;
+                    }//tryabva i da produljava do  kraya na reda
                 }
             }
+            
+            for (int i = 0; i < FileContent.Length; i += 3)
+            {
+                StudentList.Add(new Student(FileContent[i], FileContent[i + 1], FileContent[i + 2]));
+            }
+            foreach (var Student in StudentList)
+            {
+                Console.WriteLine($"{Student.Name} {Student.Lastname} {Student.Adres}");
+            }
+            return StudentList;
         }
-        for (int i = 0; i < FileContent.Length; i += 3)
-        {
-            StudentList.Add(new Student(FileContent[i], FileContent[i + 1], FileContent[i + 2]));
-        }
-        return StudentList;
     }
 }
