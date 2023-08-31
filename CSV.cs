@@ -11,7 +11,7 @@ namespace Library
 {
     public class CSVparsing
     {
-        public static List<Student> FileToList(StreamReader Reader, string[] FileContent, List<Student> StudentList,int StarterPoin)
+        public static List<Student> FileToList(StreamReader Reader, string[] FileContent, List<Student> StudentList)
         {
             int counter = 0,countersecond=0;
             string words = null;
@@ -19,7 +19,7 @@ namespace Library
             {
                 var line = Reader.ReadLine();
                 string[] split = new string[line.Length];
-                for (int i = StarterPoin; i < line.Length; i++)
+                for (int i = 0; i < line.Length; i++)
                 {
                     words += line[i];
 
@@ -31,9 +31,9 @@ namespace Library
                         counter++;
                         words = null;
                     }
-                    else if (line[i] == '"')//iskam se promeni za tazi funkciya
+                    else if (line[i] == '"')
                     {
-                        for (int j=i+1;j < line.Length; j++)
+                        for (int j = i+1; j < line.Length; j++)
                         {
                             if (line[j] != '"')
                             {
@@ -45,13 +45,14 @@ namespace Library
                                 FileContent[counter] = words;
                                 words = null;
                                 counter++;
-                                FileToList(Reader, FileContent,StudentList, j);
+                                countersecond = j;
                                 break;
 
                             }
+
                         }
-                        break;
-                    }//tryabva i da produljava do  kraya na reda
+                       i=countersecond;
+                    }
                 }
             }
             
