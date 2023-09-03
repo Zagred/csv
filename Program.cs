@@ -6,19 +6,26 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using Library;
+using CSVLibrary;
 public class Program
 {
-        static void Main(string[] args)
+    static void Main(string[] args)
+    {
+        string filePath = args[0];
+        try
         {
-            string FilePath = @"C:\Users\paco\Desktop\csv-main\document.csv";
-            StreamReader Reader=null;
-            using(Reader = new StreamReader(File.OpenRead(FilePath))){
-            string[] ArrayStudent = new string[99];
-            List<Student> List=new List<Student>();
-            List=CSVparsing.FileToList(Reader, ArrayStudent,List);
-            CSVparsing.ListPrint(List);
-            
+            using (var reader = new StreamReader(File.OpenRead(filePath)))
+            {
+
+                List<List<string>> student =  CSVparsing.FileToList(reader);
+                CSVparsing.ListPrint(student);
+
+            }
+        }
+        catch (Exception)
+        {
+
+            throw;
         }
     }
 }
