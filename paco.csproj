@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CSVLibrary\CSVLibrary.csproj" />
+    <ProjectReference Include="..\CSVParser\CSVParser.csproj" />
+  </ItemGroup>
+
 </Project>
