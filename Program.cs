@@ -17,7 +17,7 @@ public class Program
             using (var reader = new StreamReader(File.OpenRead(filePath)))
             {
 
-                List<List<string>> student =  CSVparsing.FileToList(reader);
+                List<List<string>> student =  CSVparsing.FileParsing(reader);
                 CSVparsing.ListPrint(student);
 
             }
@@ -25,7 +25,7 @@ public class Program
         catch (Exception)
         {
 
-            throw;
+            Console.WriteLine("Something went wrong.");
         }
     }
 }

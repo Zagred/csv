@@ -11,16 +11,15 @@ namespace CSVLibrary
 {
     public static class CSVparsing
     {
-        public static List<List<string>> FileToList(StreamReader Reader)
+        public static List<List<string>> FileParsing(StreamReader Reader)
         {
-            int counter = 0, countersecond = 0;
+            int counter = 0, switcher = 0;
             string words = null;
-            string[] FileContent = new string[99];
+            string[] fileArray = new string[99];
             List<List<string>> fileList = new List<List<string>>();
             while (!Reader.EndOfStream)
             {
                 var line = Reader.ReadLine();
-                string[] split = new string[line.Length];
                 for (int i = 0; i < line.Length; i++)
                 {
                     words += line[i];
@@ -29,7 +28,7 @@ namespace CSVLibrary
                     {
                         words = words.Trim(',');
                         words = words.Trim(' ');
-                        FileContent[counter] = words;
+                        fileArray[counter] = words;
                         counter++;
                         words = null;
                     }
@@ -44,23 +43,22 @@ namespace CSVLibrary
                             else
                             {
                                 words += line[j];
-                                FileContent[counter] = words;
+                                fileArray[counter] = words;
                                 words = null;
                                 counter++;
-                                countersecond = j;
+                                i = j;
                                 break;
 
                             }
 
                         }
-                        i = countersecond;
                     }
                 }
             }
 
-            for (int i = 0; i < FileContent.Length; i += 3)
+            for (int i = 0; i < fileArray.Length; i += 3)
             {
-                fileList.Add(new List<string> { FileContent[i], FileContent[i + 1], FileContent[i + 2] });
+                fileList.Add(new List<string> { fileArray[i], fileArray[i + 1], fileArray[i + 2] });
             }
             return fileList;
         }
