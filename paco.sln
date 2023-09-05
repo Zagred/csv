@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "paco", "paco.csproj", "{C54823EB-1824-49AA-A406-F1DE128F395C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSVProject", "CSVProject.csproj", "{C54823EB-1824-49AA-A406-F1DE128F395C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVParser", "..\CSVParser\CSVParser.csproj", "{459E8A21-7167-46A6-9DC5-00D62A32F930}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pacoTests", "..\pacoTests\pacoTests.csproj", "{2A6F6FAA-4489-40B3-89B8-32D1792C7D6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "..\pacoTests\Tests.csproj", "{2A6F6FAA-4489-40B3-89B8-32D1792C7D6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVLibrary", "..\CSVLibrary\CSVLibrary.csproj", "{620C895E-2C2A-4A23-B058-DDBD0C9BD1DD}"
 EndProject
